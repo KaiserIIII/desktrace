@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "name": "Simulated Unicode example (not native evidence)",
+  "steps": [
+    {"action": "set_text", "locator": {"automation_id": "input", "control_type": "Edit"}, "text": "DeskTrace 中文 Ω"},
+    {"action": "assert_text", "locator": {"automation_id": "input", "control_type": "Edit"}, "expected": "DeskTrace 中文 Ω"},
+    {"action": "assert_control", "locator": {"automation_id": "input", "control_type": "Edit"}, "state": "enabled", "value": true},
+    {"action": "assert_window", "state": "normal", "value": true}
+  ]
+}

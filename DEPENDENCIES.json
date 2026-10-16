@@ -1,0 +1,62 @@
+[
+  {
+    "package": "pywinauto",
+    "version": "0.6.9",
+    "source_repository": "https://github.com/pywinauto/pywinauto",
+    "reviewed_commit": "f6219c000d6d1bd676aec0486517afbac3ba9043",
+    "tag": "0.6.9",
+    "wheel": "pywinauto-0.6.9-py2.py3-none-any.whl",
+    "sha256": "5924b3072864a1d730c5546bbeb17cf4063ba518b618dbc5e43c18276c7c9356",
+    "download_url": "https://files.pythonhosted.org/packages/44/46/f2283648e0c237af451dc50ebc42121abfd198d12391fd9ad4df1c6b97d2/pywinauto-0.6.9-py2.py3-none-any.whl",
+    "license": "BSD 3-clause",
+    "reviewed_at": "2026-10-16T14:38:05.868693+00:00"
+  },
+  {
+    "package": "comtypes",
+    "version": "1.4.17",
+    "source_repository": "https://github.com/enthought/comtypes",
+    "reviewed_commit": "f855872f7da2e3ad561eca9861b488ecb8b6422f",
+    "tag": "1.4.17",
+    "wheel": "comtypes-1.4.17-py3-none-any.whl",
+    "sha256": "4e0a221dde2c589b82977bed802efd71cd5eb67a380347b732e02735e597f586",
+    "download_url": "https://files.pythonhosted.org/packages/89/9c/d0bc1fb69ad22a04bdc01dd9b5613a2ebc4d02ba1ec24b02127dc93791ba/comtypes-1.4.17-py3-none-any.whl",
+    "license": "MIT",
+    "reviewed_at": "2026-10-16T14:38:07.402356+00:00"
+  },
+  {
+    "package": "pywin32",
+    "version": "312",
+    "source_repository": "https://github.com/mhammond/pywin32",
+    "reviewed_commit": "2a277cb5552756c2b4d42b524dc36d25e0bb6354",
+    "tag": "b312",
+    "wheel": "pywin32-312-cp313-cp313-win_amd64.whl",
+    "sha256": "c53e878d15a1c44788082bfe712a905433473aa38f86375b7cf8b45e3acbaaf9",
+    "download_url": "https://files.pythonhosted.org/packages/ba/db/36a78e3403099d31d9746d13fdcde5accc43c1155f375a34d15983a479a7/pywin32-312-cp313-cp313-win_amd64.whl",
+    "license": "PSF",
+    "reviewed_at": "2026-10-16T14:38:08.282633+00:00"
+  },
+  {
+    "package": "six",
+    "version": "1.17.0",
+    "source_repository": "https://github.com/benjaminp/six",
+    "reviewed_commit": "ebd9b3af90247b8858d415a05e96e9ee61e48d07",
+    "tag": "1.17.0",
+    "wheel": "six-1.17.0-py2.py3-none-any.whl",
+    "sha256": "4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274",
+    "download_url": "https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl",
+    "license": "MIT",
+    "reviewed_at": "2026-10-16T14:38:10.578196+00:00"
+  },
+  {
+    "package": "setuptools",
+    "version": "84.0.0",
+    "source_repository": "https://github.com/pypa/setuptools",
+    "reviewed_commit": "72e919a8b10aaafc041205d4e3ae0e6a2e1e5f87",
+    "tag": "v84.0.0",
+    "wheel": "setuptools-84.0.0-py3-none-any.whl",
+    "sha256": "51a52592b3b99e102b609654876bd65f19f999935166d1352678931132b0c670",
+    "download_url": "https://files.pythonhosted.org/packages/95/9c/c510029fc6ef33a6275cd2c5d3cecd6613dfd6aa401d57c54f1c18852ccf/setuptools-84.0.0-py3-none-any.whl",
+    "license": "MIT",
+    "reviewed_at": "2026-10-16T14:38:12.258156+00:00"
+  }
+]

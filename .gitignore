@@ -1,0 +1,14 @@
+.venv*/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+runs/
+vendor/
+*.exe
+*.dll
+.env
+.env.*
+evidence/*
+!evidence/VALIDATION_SUMMARY.json
