@@ -19,14 +19,14 @@ The user requests autonomous implementation, so design choices and review checkp
 
 ## Steps and verification gates
 
-1. [ ] Save fixed upstream SHAs, license/release metadata and source documentation; create hashed dependency lock and isolated environment. Inspect pywinauto's selector, Invoke, Value/Text and window APIs before implementation.
-2. [ ] Write failing behavioral tests for script validation, privacy, unique selection, recorder persistence, assertions, run evidence, HTML escaping and timeout handling. Execute them before creating the corresponding modules.
-3. [ ] Implement `model.py`, `privacy.py`, `engine.py`, `report.py`, `adapters/mock.py`. Interface: `adapter.perform(step) -> dict`; errors are typed `DeskTraceError(code)`. Recorder only appends after successful execution.
-4. [ ] Add `adapters/windows.py` and `uia_worker.py`: subprocess timeout; bind HWND/PID/process-start; exact AutomationId/control-type selector, reject ambiguity, only UIA Invoke/Value actions; target-only PrintWindow capture.
-5. [ ] Add CLI (`windows`, `inspect`, `record`, `replay`, `gui`) and Tk GUI. Save JSON using exclusive creation to avoid overwriting scripts. Tests verify CLI exit codes and Unicode.
-6. [ ] Probe safe desktop capabilities. Launch a fresh non-sensitive owned app on a private desktop, exercise record/restart/replay/assertion failure/capture. Attempt system Notepad only if it exposes a fresh isolated window. Preserve all attempts.
-7. [ ] After native MVP passes, prioritize repeat and JSON-result diff. Defer automatic minimization if reset/precondition safety cannot be guaranteed.
-8. [ ] Run all tests in a clean environment, inspect evidence/report, review safety and scope, write README/architecture/research/security/validation/AI-extension/RESUME. Initialize local Git with verified owner identity, inspect tracked file boundaries and commit. No remote.
+1. [x] Save fixed upstream SHAs, license/release metadata and source documentation; create hashed dependency lock and isolated environment. Inspect pywinauto's selector, Invoke, Value/Text and window APIs before implementation.
+2. [x] Write failing behavioral tests for script validation, privacy, unique selection, recorder persistence, assertions, run evidence, HTML escaping and timeout handling. Execute them before creating the corresponding modules.
+3. [x] Implement `model.py`, `privacy.py`, `engine.py`, `report.py`, `adapters/mock.py`. Interface: `adapter.perform(step) -> dict`; errors are typed `DeskTraceError(code)`. Recorder only appends after successful execution.
+4. [x] Add `adapters/windows.py` and `uia_worker.py`: subprocess timeout; bind HWND/PID/process-start; exact AutomationId/control-type selector, reject ambiguity, only UIA Invoke/Value actions; target-only PrintWindow capture.
+5. [x] Add CLI (`windows`, `inspect`, `record`, `replay`, `gui`) and Tk GUI. Save JSON using exclusive creation to avoid overwriting scripts. Tests verify CLI exit codes and Unicode.
+6. [x] Probe safe desktop capabilities. Launch a fresh non-sensitive owned app on a private desktop, exercise record/restart/replay/assertion failure/capture. Attempt system Notepad only if it exposes a fresh isolated window. Preserve all attempts.
+7. [x] After native MVP passes, prioritize repeat and JSON-result diff. Defer automatic minimization if reset/precondition safety cannot be guaranteed.
+8. [x] Run all tests in a clean environment, inspect evidence/report, review safety and scope, write README/architecture/research/security/validation/AI-extension/RESUME. Initialize local Git with verified owner identity, inspect tracked file boundaries and commit. No remote.
 
 ## Acceptance commands
 

@@ -1,0 +1,101 @@
+{
+  "kind": "bounded sanitized engineering validation summary, not raw evidence",
+  "generated_at": "2026-10-16T15:18:46.648503+00:00",
+  "tested_implementation_commit": "c4c542fe1b1524eb1ebe688b0eef230d1561fe9c",
+  "environment": {
+    "os": "Windows 11 build 26200",
+    "python": "3.13.0",
+    "architecture": "x64"
+  },
+  "clean_checkout": "PASS",
+  "installed_package_unrelated_cwd": "PASS",
+  "checks": {
+    "verification": {
+      "status": "PASS",
+      "raw_summary_relative_to_acceptance": "checkout/runs/verification-5569780e82294c74b96aa952adf5a9b1/summary.json",
+      "raw_summary_sha256": "261fd8c9b119d2210994105d2c493bdf1a73ee641e8d2bc32b1daf24ec49f208",
+      "test_count": 41
+    },
+    "native-demo": {
+      "status": "PASS",
+      "raw_summary_relative_to_acceptance": "checkout/runs/native-demo-bffcbab579814e03be6457fa45750ab8/summary.json",
+      "raw_summary_sha256": "04539d1db0f72f9122ff9d5321e4abda844a083b53a54806268ebaec5d1f4821",
+      "checks": {
+        "record_and_verify": "PASS",
+        "closed_window_detected": "PASS",
+        "restart_replay": "PASS",
+        "intentional_assertion_failure_detected": "PASS",
+        "real_failure_screenshot": "PASS",
+        "evidence_manifest": "PASS",
+        "--password-control": "PASS",
+        "--duplicate-control": "PASS"
+      }
+    },
+    "native-cli": {
+      "status": "PASS",
+      "raw_summary_relative_to_acceptance": "checkout/runs/native-cli-24cab8aeb48542b8ba1c82f808d4ddd8/summary.json",
+      "raw_summary_sha256": "54694ae1f72de81d95c18bf071adafc86d1f36437a25e14f6f6e5af796bdefbb"
+    },
+    "gui-smoke": {
+      "status": "PASS",
+      "raw_summary_relative_to_acceptance": "checkout/runs/gui-smoke-9580aa44437b455da2aa2872ca5e15fb/summary.json",
+      "raw_summary_sha256": "276204b7b7189fd37fd34e4ce33844b42153b9b447a910b57d378950435ee8ee",
+      "checks": {
+        "enumerate_select_bind": "PASS",
+        "gui_record_callbacks": "PASS",
+        "gui_replay_callback": "PASS"
+      }
+    },
+    "extended-native": {
+      "status": "PASS",
+      "raw_summary_relative_to_acceptance": "checkout/runs/extended-native-2184562851074881836727e3f4168c61/summary.json",
+      "raw_summary_sha256": "f89f902cf85f7f7045832af8e25bd347b2e15307c4b1891e2d167ecfbd0c7f34",
+      "checks": {
+        "repeat": "PASS",
+        "compare_equal": "PASS",
+        "compare_failure": "PASS",
+        "minimize": "PASS",
+        "all_manifests": "PASS"
+      },
+      "repeat": {
+        "runs": 3,
+        "passed": 3,
+        "failed": 0,
+        "mixed_outcomes": false,
+        "outcome_variants": 1,
+        "same_backend": true,
+        "same_script": true,
+        "interpretation": "Descriptive sample only. Reset/isolation are caller responsibilities; no deployment flake-rate estimate."
+      },
+      "original_failing_steps": 7,
+      "minimized_steps": 3,
+      "minimizer_evaluations": 15,
+      "one_minimal": true
+    },
+    "system-app": {
+      "status": "PASS",
+      "application": "Character Map",
+      "checks": {
+        "record_unicode_read_assert": "PASS",
+        "closed_window": "PASS",
+        "fresh_process_replay": "PASS",
+        "intentional_assertion_failure": "PASS",
+        "screenshot": "PASS",
+        "manifest": "PASS"
+      },
+      "raw_summary_relative_to_source": "runs/system-app-8a5a0b4cbe45439a95d0419881f295bb/summary.json",
+      "raw_summary_sha256": "d414965fc68729df7279dc0163ab611aaf0a53075d4e40a070e9ece6d9fe8726",
+      "executable_sha256": "34632199cba973245b1fb6bcd3b4d3ccee54fd3081f3c5577156740e065d1825"
+    }
+  },
+  "NOT_RUN": [
+    "Notepad E2E",
+    "Physical-input GUI/file-picker acceptance",
+    "Independent Windows host/VM",
+    "Broad third-party app compatibility",
+    "Real deployment flake/error rates",
+    "Comprehensive dependency-CVE/binary audit"
+  ],
+  "research_claims": "None; previous NO-GO unchanged",
+  "remote_publication": "Not authorized; none performed"
+}

@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "name": "Windows Character Map public Unicode test",
+  "steps": [
+    {"action": "set_text", "locator": {"automation_id": "104", "control_type": "Edit"}, "text": "DeskTrace 中文 Ω"},
+    {"action": "assert_text", "locator": {"automation_id": "104", "control_type": "Edit"}, "expected": "DeskTrace 中文 Ω\r"},
+    {"action": "assert_control", "locator": {"automation_id": "104", "control_type": "Edit"}, "state": "enabled", "value": true},
+    {"action": "assert_window", "state": "normal", "value": true}
+  ]
+}

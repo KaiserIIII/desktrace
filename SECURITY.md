@@ -28,4 +28,4 @@ Manual local source review, strict-input tests, password/ambiguity tests (mock a
 
 Keep `.venv*`, `vendor/`, `runs/` and raw `evidence/` out of Git. Review the exact tracked list and full history for secrets/private paths. Only deliberately sanitized summaries belong in version control. No raw user-window inventory, original research project data, local identity backups, credentials, personal screenshots or third-party binaries should be published. `.gitignore` is a convenience, not proof of clearance.
 
-DeskTrace currently has no remote and no release. A public alpha could be considered after system-app and physical GUI validation in a disposable Windows VM plus another safety review. Do not market it as generally secure or fully validated.
+DeskTrace currently has no remote and no release. Character Map system-app validation passed on the current host. A public alpha could be considered after physical GUI validation and an independent host/VM repeat plus another safety review. Do not market it as generally secure or fully validated.

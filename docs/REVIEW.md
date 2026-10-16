@@ -13,7 +13,7 @@ This is a local self-review by the implementing agent, not an independent human/
 
 ## Deliberately retained limits
 
-- P2 compatibility/acceptance: a fresh system-app E2E was not achieved on the private desktop. Physical GUI interaction/file pickers were not exercised. This blocks a claim of broad public readiness; the own-fixture alpha remains useful.
+- P2 compatibility/acceptance: system Notepad did not expose a fresh owned window, but built-in Character Map subsequently completed the system-app E2E. Physical GUI interaction/file pickers and a second Windows host were not exercised. This blocks a claim of broad public readiness; the narrowly scoped alpha remains useful.
 - P2 privacy boundary: text guard/password properties/window identity are trusted heuristics, not adversarial defenses. Screenshots remain opt-in and require manual review. Do not test personal apps.
 - P2 recovery: provider timeout means the target action may already have happened. The tool stops, rather than blindly retries. Operators must reset/rebind. It does not restore app state automatically.
 - P3 recorder ergonomics: explicit commands cover a deliberately small action vocabulary. No freeform passive recorder, coordinate/image fallback, drag/scroll/menu/toggle pattern coverage or general locator repair.
@@ -24,4 +24,4 @@ No remaining known P0/P1 issue was observed in the tested owned-fixture scope. T
 
 ## Next decisive validation
 
-Use a disposable Windows VM with a verified fresh system-app window. Complete input/read/restart/replay/failure/report there, then physically exercise GUI selection/record/save/load/replay without accessing private data. Evaluate whether a narrowly scoped public alpha is justified only after reviewing that evidence.
+Use a disposable Windows VM to repeat the already demonstrated Character Map system-app flow independently, then physically exercise GUI selection/record/save/load/replay without accessing private data. Evaluate whether a narrowly scoped public alpha is justified only after reviewing that evidence.

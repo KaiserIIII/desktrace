@@ -75,13 +75,14 @@ Exit codes: `0` accepted command/passing replay, `2` failed replay/integrity ver
 .\.venv\Scripts\python.exe tools/verify.py
 .\.venv\Scripts\python.exe tools/native_demo.py
 .\.venv\Scripts\python.exe tools/native_cli_demo.py
+.\.venv\Scripts\python.exe tools/system_app_demo.py
 .\.venv\Scripts\python.exe tools/gui_smoke.py
 .\.venv\Scripts\python.exe tools/extended_native_demo.py
 ```
 
 The native demos compile our MIT-licensed WinForms fixture with the existing Windows .NET Framework C# compiler. They launch only owned processes on a fresh non-visible `DeskTrace-…` desktop, never switch the user's visible desktop, and retain results under `runs/`. This is UI separation, **not a security sandbox**. Do not use it for untrusted applications. The GUI smoke invokes callbacks while rendering real Tk/UIA windows; it is not a physical-input usability test.
 
-Real fixture UIA recording, Unicode input/readback, button invocation, restart/replay, intentional assertion failure and target screenshot have run successfully. A system Notepad probe did not expose a unique owned window on the private desktop: **Notepad E2E is NOT RUN**. These results must not be substituted for each other. The exact current test count, command evidence, failed attempts and remaining gaps are in [VALIDATION.md](VALIDATION.md).
+Real fixture UIA recording, Unicode input/readback, button invocation, restart/replay, intentional assertion failure and target screenshot have run successfully. The built-in **Windows Character Map** also completed input/readback, close/restart/replay and intentional failure with a real report. On this host its TextPattern includes a final carriage return, explicitly represented in [the example](examples/charmap.json); no implicit text trimming occurs. A system Notepad probe did not expose a unique owned window on the private desktop: **Notepad E2E is NOT RUN**. These results must not be substituted for each other. The exact current test count, command evidence, failed attempts and remaining gaps are in [VALIDATION.md](VALIDATION.md).
 
 ## Handoff
 

@@ -19,6 +19,7 @@ Windows 11 build 26200, 64-bit CPython 3.13.0. Native dependencies: pywinauto 0.
 | Real Tk GUI render and recording/replay callbacks | PASS; screenshot inspected | `runs/gui-smoke-f10a88d443c54c62a4c524e05882563e/summary.json` |
 | Three fresh-process repeated native runs and outcome diff | PASS, 3/3; one normalized outcome variant | `runs/extended-native-62debbfc212d4eb594fb55aeada3157e/repeat.json` |
 | Bounded native failure minimization | PASS, 7→3 steps, 15 evaluations, tested one-step minimality | Same directory, `plan.json`, `minimized.json`, `progress.json`; every evaluation retained |
+| Built-in Windows Character Map Unicode/close/restart/replay/intentional failure/report | PASS; actual screenshot inspected | `runs/system-app-8a5a0b4cbe45439a95d0419881f295bb/summary.json` |
 
 The GUI smoke programmatically invokes UI callbacks while Tk renders and pumps messages. It does not test physical mouse/keyboard navigation, native file-picker interactions or human usability. Native demo cleanup terminates only the owned held process handles; no graceful close/save-dialog behavior is claimed.
 
@@ -31,6 +32,7 @@ The GUI smoke programmatically invokes UI callbacks while Tk renders and pumps m
 - `runs/gui-smoke-a4997847f56546c4a5b5f6af987f41d6`: Tcl resource lookup failed in this Windows venv. Same-base-install resource discovery was added, without OS changes.
 - `runs/gui-smoke-b89cbbeb5f2c41e981c4c45665cc94d0`: GUI callbacks passed, but screenshot querying its provider blocked the same Tk message loop and timed out. The harness was corrected to pump Tk during the capture worker. No timeout was converted to a pass.
 - Dependency download via the configured pip index was slow and interrupted. Official PyPI artifact URLs were then used with exact hashes. The initial assumed comtypes `v1.4.17` tag did not exist; actual tag `1.4.17` and commit were resolved through GitHub before installation.
+- `runs/system-app-e4d93394d4e94a998483167bdd23c0a1`: Character Map's UIA TextPattern returned the entered text followed by CR, so the initial exact-equality assertion correctly failed. Separate ASCII/Unicode probes recorded code points. The subsequent demo script explicitly expects the provider's trailing CR; no core normalization or suppression was introduced. The failed initial bundle remains intact.
 
 ## NOT RUN and limits
 
@@ -40,4 +42,15 @@ Also NOT RUN: physical-input GUI acceptance, Windows versions/architectures othe
 
 ## Final clean-checkout gate
 
-Initial source verification is complete. A new local Git checkout, fresh venv install from the reviewed lock, installed-package use from an unrelated working directory, and full/native validation are the next gate. They are not marked PASS until the new checkout has actually executed. Final results will be appended here with their command/evidence paths.
+**PASS**, new checkout at `E:/final/desktrace-acceptance-20261016T151029Z/checkout`. The tested implementation commit is `c4c542fe1b1524eb1ebe688b0eef230d1561fe9c`. Full command argv/CWD/exit codes and stdout/stderr are retained in the acceptance directory's `commands.json`, numbered logs and `summary.json`.
+
+- New virtual environment, fresh downloads of all five reviewed wheels, hash-checked offline dependency install and normal package build/install passed.
+- All 41 tests, dependency check, CLI normal/failing/invalid/authorization cases, comparison/summary and manifest commands passed. Raw suite output: checkout `runs/verification-5569780e82294c74b96aa952adf5a9b1/00.stderr.log`.
+- From the unrelated acceptance working directory, the installed module resolved under the new venv's `site-packages`, and the installed CLI replayed the example successfully. It did not import from the original project directory.
+- Real native fixture rerun: `runs/native-demo-bffcbab579814e03be6457fa45750ab8/summary.json`, including the new actual `exists=false` check after closing the owned process.
+- Native CLI rerun: `runs/native-cli-24cab8aeb48542b8ba1c82f808d4ddd8/summary.json`.
+- Tk callback/render rerun: `runs/gui-smoke-9580aa44437b455da2aa2872ca5e15fb/summary.json`.
+- Extended native rerun: `runs/extended-native-2184562851074881836727e3f4168c61/summary.json`: 3/3 fresh processes pass; 7→3 steps in 15 reduction evaluations, all manifests verified.
+- Compileall and clean Git status of the tested checkout passed. Final documentation/system-app harness additions do not alter the tested `desktrace/` implementation; finalization verifies the blob identity explicitly.
+
+Raw run files intentionally remain outside version control. `evidence/VALIDATION_SUMMARY.json` is a deliberately bounded, source-controlled summary rather than a substitute for those raw logs. A final checkout update revalidates added delivery files/system-app harness separately.
