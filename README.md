@@ -4,6 +4,17 @@
 
 DeskTrace is an early engineering prototype built on [pywinauto UIA](https://github.com/pywinauto/pywinauto). It adds a small CLI/Tk workflow and evidence handling. It makes no research novelty, broad application-compatibility or production-reliability claim.
 
+**Source-only experimental alpha.** Native desktop operation targets Windows with 64-bit CPython 3.13, Tcl/Tk and the Microsoft runtime below. Linux is useful only for portable tests and the mock backend; it cannot operate a Windows desktop.
+
+| Environment / check | Evidence and qualification |
+| --- | --- |
+| Independent Windows Server 2022 Desktop Experience, build 20348, Python 3.13.0 x64 | PASS: fresh install/start/uninstall/reinstall, 41 tests, real Notepad Unicode record/replay, intentional failure evidence, native recorder/file dialogs, restart/window switching and resolution change. [Acceptance record](docs/VM_ACCEPTANCE.md). |
+| Original Windows 11 development host | Fixture and Character Map demonstrations passed. This is development-host evidence, not independent Windows 11 acceptance. Its private-desktop Notepad E2E was NOT RUN. |
+| Independent Windows 11 client; changed DPI; RDP | **NOT RUN.** A resolution change is not a DPI or RDP test. |
+| GitHub-hosted Windows/Linux CI | Checks installation, 41 portable/boundary tests and mock CLI/evidence. It does **not** qualify UIA, Notepad, native file dialogs or GUI behavior. Hosted runs are NOT RUN before publication. |
+
+Locked/service sessions, cross-privilege operation, broad app coverage and deployment reliability are unqualified. Read [CI scope](docs/CI.md) before interpreting a green workflow.
+
 ## What it does
 
 - Enumerates HWND/PID/window classes. Window titles are opt-in.
@@ -31,6 +42,8 @@ py -3.13 -m venv .venv
 .\.venv\Scripts\python.exe -c "import win32ui, pywinauto; print('Native dependencies OK')"
 .\.venv\Scripts\python.exe -m desktrace --help
 ```
+
+If the optional `py` launcher is absent, replace the first command with `& 'C:\Path\To\Python313\python.exe' -m venv .venv`, using your actual 64-bit Python 3.13 executable. The independent VM used an explicit interpreter path. The later commands use the venv directly and do not require launcher installation or activation.
 
 The downloader fetches only reviewed files from files.pythonhosted.org and checks their recorded hashes. [DEPENDENCIES.json](DEPENDENCIES.json) records repositories, source commits, versions, licenses and artifact hashes. Wheels are not redistributed in Git. The native wheel lock targets CPython 3.13 x64; other architectures/versions need a separately reviewed lock.
 
@@ -98,3 +111,5 @@ The independent Server VM also passed real native input on the recorder GUI, nat
 - [Resume/checkpoints](RESUME.md)
 
 No remote repository, publication, release, telemetry or cloud service is configured. Public release requires a separate explicit decision. License: [MIT](LICENSE).
+
+The [source-release boundary](docs/SOURCE_RELEASE.md) lists what may be published and what must stay private. Source publication does not include an installer, wheels, Windows media, VM disks, credentials or raw desktop evidence.
