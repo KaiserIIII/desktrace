@@ -26,6 +26,7 @@ class WorkerBoundaryTests(unittest.TestCase):
             c.is_enabled = lambda: False
             self.assertFalse(actionable(c, True))
 
+    @patch('desktrace.adapters.windows.sys.platform', 'win32')
     def test_timeout_has_unknown_outcome_and_no_automatic_retry(self):
         with patch('desktrace.adapters.windows.subprocess.run', side_effect=subprocess.TimeoutExpired('uia', 1)) as run:
             with self.assertRaises(DeskTraceError) as cm:
@@ -33,6 +34,7 @@ class WorkerBoundaryTests(unittest.TestCase):
             self.assertEqual(cm.exception.code, 'WORKER_TIMEOUT_OUTCOME_UNKNOWN')
             self.assertEqual(run.call_count, 1)
 
+    @patch('desktrace.adapters.windows.sys.platform', 'win32')
     def test_provider_error_does_not_expose_raw_stderr(self):
         p = subprocess.CompletedProcess([], 1, '', 'private provider text')
         with patch('desktrace.adapters.windows.subprocess.run', return_value=p):
@@ -40,11 +42,13 @@ class WorkerBoundaryTests(unittest.TestCase):
                 worker_call({'operation': 'perform'})
             self.assertEqual(cm.exception.code, 'WORKER_FAILED')
 
+    @patch('desktrace.adapters.windows.sys.platform', 'win32')
     def test_malformed_worker_response_rejected(self):
         for out in ('not json', '{}', '{"ok":true}'):
             p = subprocess.CompletedProcess([], 0, out, '')
-            with self.subTest(out=out), patch('desktrace.adapters.windows.subprocess.run', return_value=p), self.assertRaises(DeskTraceError):
+            with self.subTest(out=out), patch('desktrace.adapters.windows.subprocess.run', return_value=p), self.assertRaises(DeskTraceError) as cm:
                 worker_call({'operation': 'perform'})
+            self.assertEqual(cm.exception.code, 'INVALID_WORKER_RESPONSE')
 
     def test_screenshot_requires_explicit_opt_in(self):
         with patch('desktrace.adapters.windows.worker_call', return_value={'hwnd': 100, 'pid': 200}) as rpc:
