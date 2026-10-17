@@ -34,7 +34,7 @@ The GUI smoke programmatically invokes UI callbacks while Tk renders and pumps m
 - Dependency download via the configured pip index was slow and interrupted. Official PyPI artifact URLs were then used with exact hashes. The initial assumed comtypes `v1.4.17` tag did not exist; actual tag `1.4.17` and commit were resolved through GitHub before installation.
 - `runs/system-app-e4d93394d4e94a998483167bdd23c0a1`: Character Map's UIA TextPattern returned the entered text followed by CR, so the initial exact-equality assertion correctly failed. Separate ASCII/Unicode probes recorded code points. The subsequent demo script explicitly expects the provider's trailing CR; no core normalization or suppression was introduced. The failed initial bundle remains intact.
 
-## NOT RUN and limits
+## Original Windows 11 host limits (2026-10-16)
 
 System Notepad E2E: **NOT RUN**. A bounded private-desktop launch probe found no unique owned `Notepad` class window for the launched PID. No user Notepad session or other desktop window was attached. `runs/notepad-probe-*/probe.json` records this limitation; `tools/notepad_probe.py` provides a repeatable availability probe. Do not describe the WinForms fixture as Notepad or a system app.
 
@@ -54,3 +54,7 @@ Also NOT RUN: physical-input GUI acceptance, Windows versions/architectures othe
 - Compileall and clean Git status of the tested checkout passed. Final documentation/system-app harness additions do not alter the tested `desktrace/` implementation; finalization verifies the blob identity explicitly.
 
 Raw run files intentionally remain outside version control. `evidence/VALIDATION_SUMMARY.json` is a deliberately bounded, source-controlled summary rather than a substitute for those raw logs. A final checkout update revalidates added delivery files/system-app harness separately.
+
+## Independent Windows VM follow-up (2026-10-17)
+
+The earlier limits above describe the original host. The new [VM acceptance record](docs/VM_ACCEPTANCE.md) records a separate freshly installed Windows Server 2022 Desktop Experience environment, its actual 41-test/native-tool/uninstall results, real classic Notepad E2E, missing-MFC prerequisite failure and GUI acceptance follow-up. Original failed logs and statuses remain unchanged. A Server guest result does not establish independent Windows 11 client compatibility.

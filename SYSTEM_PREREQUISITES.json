@@ -1,0 +1,18 @@
+{
+  "scope": "System prerequisite, separate from the unchanged Python wheel lock",
+  "component": "Microsoft Visual C++ v14 Redistributable x64",
+  "tested_version": "14.51.36247.0",
+  "required_by": "pywin32 312 win32ui.pyd imports mfc140u.dll; pywinauto 0.6.9 imports win32ui",
+  "official_documentation": "https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist",
+  "download_url": "https://download.visualstudio.microsoft.com/download/pr/ebdab8e5-1d7b-4d9f-a11b-cbb1720c3b12/843068991DAAA1F73AD9F6239BCE4D0F6A07A51F18C37EA2A867E9BECA71295C/VC_redist.x64.exe",
+  "sha256": "843068991daaa1f73ad9f6239bce4d0f6a07a51f18c37ea2a867e9beca71295c",
+  "bytes": 18731856,
+  "authenticode": "Valid; Microsoft Corporation",
+  "source_commit": "N/A: proprietary Microsoft binary; version and artifact hash pinned",
+  "license": "Microsoft Software License Terms; obtain and install from Microsoft. Binary not redistributed by DeskTrace.",
+  "qualification_environment": "Fresh Windows Server 2022 Standard Evaluation Desktop Experience, build 20348; CPython 3.13.0 x64",
+  "installed_on_utc": "2026-10-17",
+  "exact_install_time": "See raw guest installer log; no synthetic timestamp supplied",
+  "before": "mfc140u.dll absent; win32ui/pywinauto import exit 1",
+  "after": "mfc140u.dll present; win32ui/pywinauto import exit 0; official installer exit 0"
+}

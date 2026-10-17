@@ -97,5 +97,100 @@
     "Comprehensive dependency-CVE/binary audit"
   ],
   "research_claims": "None; previous NO-GO unchanged",
-  "remote_publication": "Not authorized; none performed"
+  "remote_publication": "Not authorized; none performed",
+  "independent_vm_acceptance": {
+    "generated_at": "2026-10-17T02:25:12.251315+00:00",
+    "tested_source_commit": "4ede97c5293c3d59378977d846ca76b9fd9bda81",
+    "core_tree": "b233515b42ba2082b6f4a86792a861534aa825a8",
+    "environment": {
+      "os": "Windows Server 2022 Standard Evaluation Desktop Experience",
+      "build": "20348",
+      "python": "3.13.0",
+      "arch": "x64",
+      "hypervisor": "QEMU/WHPX",
+      "vcpus": 4,
+      "ram_gib": 6,
+      "network": "none"
+    },
+    "status": "PASS_WITH_SCOPE_LIMITATIONS",
+    "tests": 41,
+    "kit_commands_passed": 15,
+    "gates": {
+      "01_fresh_install_startup_uninstall": "PASS",
+      "02_native_gui_select_record_save_load_replay": "PASS",
+      "03_real_notepad_chinese_unicode": "PASS",
+      "04_native_file_picker": "PASS",
+      "05_failure_png_html_json_and_minimizer": "PASS",
+      "06_complete_gui_process_restart": "PASS",
+      "07_target_decoy_window_switch": "PASS",
+      "08_guest_resolution_change": "PASS"
+    },
+    "minimizer": {
+      "before": 7,
+      "after": 3,
+      "evaluations": 15,
+      "one_minimal": true
+    },
+    "resolution": {
+      "before": [
+        1024,
+        768
+      ],
+      "after": [
+        1280,
+        1024
+      ],
+      "DPI_change": "NOT RUN"
+    },
+    "failed_attempts_retained": [
+      "Missing MFC prerequisite before official runtime installation",
+      "GUI test observer sharing violation",
+      "GUI test driver used venv launcher PID instead of actual Tk child PID",
+      "GUI test driver treated Explorer Open split button as a plain UIA Button"
+    ],
+    "evidence_archives": [
+      {
+        "file": "raw/guest-acceptance-attempt1.zip",
+        "bytes": 194955,
+        "sha256": "604416086a624250dff48e043173ab924e870bb4ea7f5f4be18142d29411231d"
+      },
+      {
+        "file": "raw/guest-acceptance-attempt2.zip",
+        "bytes": 698827,
+        "sha256": "bc43b25e167af7a8ff3c37c0fd07fdeaec16bf7c342dccf0a1324103631aebd3"
+      },
+      {
+        "file": "raw/guest-acceptance-vm2-attempt1.zip",
+        "bytes": 487257,
+        "sha256": "af8bd65816afc392caae0c1b56324bdb0ae1d8c0208a01ce3daa0bb92d93187e"
+      },
+      {
+        "file": "raw/vm2-gui-retry2.zip",
+        "bytes": 27380,
+        "sha256": "8ed9bef1e58d480195b6e0b43b06d1acbf01bf3b6468c34fb711a6f3831d63c8"
+      },
+      {
+        "file": "raw/vm2-gui-retry3.zip",
+        "bytes": 39569,
+        "sha256": "1b0868753ab27f357b8d590863c055e8c075d659336a9e45c8e8b21509c6ba8a"
+      },
+      {
+        "file": "raw/final-gui-acceptance.zip",
+        "bytes": 69500,
+        "sha256": "d6fe16dba5c60d04eff7210faaf122cfb490cd1e47f99df7f4ae465e51d981b9"
+      }
+    ],
+    "raw_evidence_distributed": false,
+    "not_run": [
+      "Independent Windows 11 client guest",
+      "Changed DPI",
+      "RDP/locked/service/cross-privilege desktop operation",
+      "Human usability study",
+      "Broad third-party app compatibility",
+      "Deployment flakiness and error rates",
+      "Comprehensive CVE/binary security audit"
+    ],
+    "scientific_decision": "NO-GO",
+    "transferred_bundle_count_interpretation": "68 manifest checks over retained evidence trees; repeated copies can be included, not unique independent cases."
+  }
 }

@@ -4,9 +4,9 @@ Work only in this DeskTrace directory or a fresh checkout. Do not modify PatchVe
 
 ## Start
 
-Follow the exact Windows 3.13 x64 commands in [README.md](README.md). Do not run an unreviewed dependency upgrade: [requirements-windows.lock](requirements-windows.lock) and [DEPENDENCIES.json](DEPENDENCIES.json) pin reviewed versions, source references and wheel hashes. `tools/fetch_wheels.py` downloads official artifacts only. Use a new venv, then install the project with `--no-build-isolation --no-deps` after the lock. No global package/registry/security changes are needed.
+Follow the exact Windows 3.13 x64 commands in [README.md](README.md), including the native import check. A clean Windows VM also needed Microsoft's Visual C++ x64 MFC runtime; [SYSTEM_PREREQUISITES.json](SYSTEM_PREREQUISITES.json) records the tested official artifact. Its system installer may require administrator rights; DeskTrace itself does not. Do not run an unreviewed dependency upgrade: [requirements-windows.lock](requirements-windows.lock) and [DEPENDENCIES.json](DEPENDENCIES.json) pin reviewed versions, source references and wheel hashes. `tools/fetch_wheels.py` downloads official artifacts only. Use a new venv, then install the project with `--no-build-isolation --no-deps` after the lock. No security-setting changes are needed.
 
-Use `python -m desktrace gui` for interactive explicit recording, or `windows` → `inspect --hwnd … --pid … --authorize` → `record`/`replay` on a disposable test app. Physical mouse clicks are represented only when the control supports UIA Invoke; arbitrary drag/key/coordinate replay is not implemented. Never test a private browser, messenger, password manager, terminal or security dialog.
+Use `python -m desktrace gui` for interactive explicit recording, or `windows` → `inspect --hwnd … --pid … --authorize` → `record`/`replay` on a disposable test app. The recorder executes explicit UIA Value/Invoke operations; it does not record arbitrary physical mouse clicks, drag paths or key streams. Never test a private browser, messenger, password manager, terminal or security dialog.
 
 ## Reproduce evidence
 
@@ -37,4 +37,4 @@ Recording writes the final script at save/EOF; if interrupted earlier, retain/re
 
 ## Next useful task
 
-In a disposable Windows VM, physically exercise the GUI's select/record/save/load/replay/failure workflow and repeat the system-app flow independently. Character Map already passed on the current host; Notepad remains unvalidated. Keep private desktop fixtures as a separate test tier. A public alpha decision should follow independent-host/physical-GUI evidence and a fresh source/history/privacy review. Existing results do not support general compatibility, real-world flake rates or scientific novelty.
+Independent Windows Server desktop acceptance is complete; see [the actual gates and retained failures](docs/VM_ACCEPTANCE.md). A source-only experimental alpha is technically qualified within that stated scope. Keep private-desktop fixtures, native recorder input and real Notepad as separate evidence tiers. The next useful validation is an independent Windows 11 client guest before expanding the supported-environment claim. Installer packaging and a demo video are not delivered. A public repository, push or release still requires separate explicit authorization. Existing results do not support general compatibility, real-world flake rates or scientific novelty.

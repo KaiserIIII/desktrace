@@ -19,13 +19,16 @@ The test script stores supplied test text in plain JSON. Observed text is repres
 
 Reviewed native environment: **64-bit CPython 3.13 on Windows**. Install Python with Tcl/Tk support. Use an interactive, unlocked test session with apps at the same privilege level; administrator access and Developer Mode are not required by DeskTrace. UIA cannot automate every custom-drawn control.
 
+On a clean Windows installation, also install Microsoft's [Visual C++ v14 x64 Redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist). Its MFC runtime (`mfc140u.dll`) is needed by `pywin32`'s `win32ui`, which pywinauto imports. Python and the locked wheels alone did not supply it in our fresh VM. Installing this system prerequisite may require administrator rights; running DeskTrace does not. The exact independently tested artifact is recorded in [SYSTEM_PREREQUISITES.json](SYSTEM_PREREQUISITES.json). Download the runtime from Microsoft; it is not bundled with this project.
+
 From the project root in PowerShell:
 
 ```powershell
 py -3.13 -m venv .venv
-python tools/fetch_wheels.py
+.\.venv\Scripts\python.exe tools/fetch_wheels.py
 .\.venv\Scripts\python.exe -m pip install --no-index --find-links vendor\wheels --require-hashes -r requirements-windows.lock
 .\.venv\Scripts\python.exe -m pip install --no-build-isolation --no-deps .
+.\.venv\Scripts\python.exe -c "import win32ui, pywinauto; print('Native dependencies OK')"
 .\.venv\Scripts\python.exe -m desktrace --help
 ```
 
@@ -82,7 +85,9 @@ Exit codes: `0` accepted command/passing replay, `2` failed replay/integrity ver
 
 The native demos compile our MIT-licensed WinForms fixture with the existing Windows .NET Framework C# compiler. They launch only owned processes on a fresh non-visible `DeskTrace-…` desktop, never switch the user's visible desktop, and retain results under `runs/`. This is UI separation, **not a security sandbox**. Do not use it for untrusted applications. The GUI smoke invokes callbacks while rendering real Tk/UIA windows; it is not a physical-input usability test.
 
-Real fixture UIA recording, Unicode input/readback, button invocation, restart/replay, intentional assertion failure and target screenshot have run successfully. The built-in **Windows Character Map** also completed input/readback, close/restart/replay and intentional failure with a real report. On this host its TextPattern includes a final carriage return, explicitly represented in [the example](examples/charmap.json); no implicit text trimming occurs. A system Notepad probe did not expose a unique owned window on the private desktop: **Notepad E2E is NOT RUN**. These results must not be substituted for each other. The exact current test count, command evidence, failed attempts and remaining gaps are in [VALIDATION.md](VALIDATION.md).
+Real fixture UIA recording, Unicode input/readback, button invocation, restart/replay, intentional assertion failure and target screenshot have run successfully. The built-in **Windows Character Map** also completed input/readback, close/restart/replay and intentional failure with a real report. On the original Windows 11 host its TextPattern includes a final carriage return, explicitly represented in [the example](examples/charmap.json); no implicit text trimming occurs. That host's private-desktop Notepad probe found no unique owned window, so its Notepad E2E remains **NOT RUN**. Separately, a fresh **Windows Server 2022 Desktop Experience VM** passed real classic Notepad Unicode input/readback, close/relaunch/JSON replay and intentional failure with a real screenshot/report. These are different environments, not interchangeable results. See [independent VM acceptance](docs/VM_ACCEPTANCE.md) and [VALIDATION.md](VALIDATION.md) for actual gates, failures and remaining limits.
+
+The independent Server VM also passed real native input on the recorder GUI, native file-dialog save/load with a Chinese filename, complete GUI restart/replay, target/decoy window switching and a resolution change from 1024×768 to 1280×1024. These are automated GUI acceptance results, not a human usability study or a claim of general Windows compatibility.
 
 ## Handoff
 
