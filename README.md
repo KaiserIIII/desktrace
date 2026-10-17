@@ -8,10 +8,10 @@ DeskTrace is an early engineering prototype built on [pywinauto UIA](https://git
 
 | Environment / check | Evidence and qualification |
 | --- | --- |
-| Independent Windows Server 2022 Desktop Experience, build 20348, Python 3.13.0 x64 | PASS: fresh install/start/uninstall/reinstall, 41 tests, real Notepad Unicode record/replay, intentional failure evidence, native recorder/file dialogs, restart/window switching and resolution change. [Acceptance record](docs/VM_ACCEPTANCE.md). |
+| Independent Windows Server 2022 Desktop Experience, build 20348, Python 3.13.0 x64 | **All 8 independent VM acceptance gates PASS**: fresh install/start/uninstall/reinstall, 41 tests, real Notepad Unicode record/replay, intentional failure evidence, native recorder/file dialogs, restart/window switching and resolution change. [Acceptance record](docs/VM_ACCEPTANCE.md). |
 | Original Windows 11 development host | Fixture and Character Map demonstrations passed. This is development-host evidence, not independent Windows 11 acceptance. Its private-desktop Notepad E2E was NOT RUN. |
 | Independent Windows 11 client; changed DPI; RDP | **NOT RUN.** A resolution change is not a DPI or RDP test. |
-| GitHub-hosted Windows/Linux CI | Checks installation, 41 portable/boundary tests and mock CLI/evidence. It does **not** qualify UIA, Notepad, native file dialogs or GUI behavior. Hosted runs are NOT RUN before publication. |
+| GitHub-hosted Windows/Linux CI | Checks installation, 41 portable/boundary tests and mock CLI/evidence. It does **not** qualify UIA, Notepad, native file dialogs or GUI behavior and **cannot replace real GUI acceptance**. Inspect [actual workflow results](https://github.com/KaiserIIII/desktrace/actions) for the commit you use. |
 
 Locked/service sessions, cross-privilege operation, broad app coverage and deployment reliability are unqualified. Read [CI scope](docs/CI.md) before interpreting a green workflow.
 
@@ -110,6 +110,6 @@ The independent Server VM also passed real native input on the recorder GUI, nat
 - [Future AI agent evaluation scope](docs/AGENT_EVALUATION_PLAN.md)
 - [Resume/checkpoints](RESUME.md)
 
-No remote repository, publication, release, telemetry or cloud service is configured. Public release requires a separate explicit decision. License: [MIT](LICENSE).
+Published as [KaiserIIII/desktrace](https://github.com/KaiserIIII/desktrace), a **source-only experimental alpha**. No installer, PyPI package or formal Release is published; no telemetry or cloud service is configured. Feature development is frozen. License: [MIT](LICENSE).
 
 The [source-release boundary](docs/SOURCE_RELEASE.md) lists what may be published and what must stay private. Source publication does not include an installer, wheels, Windows media, VM disks, credentials or raw desktop evidence.

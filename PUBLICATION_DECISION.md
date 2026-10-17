@@ -4,7 +4,7 @@
 
 **PUBLICATION_READY: YES for a source-only experimental alpha within the tested scope.** This engineering decision follows the independent Windows desktop acceptance in [docs/VM_ACCEPTANCE.md](docs/VM_ACCEPTANCE.md) and a bounded local source/history/distribution review. It does not qualify a packaged installer or production release.
 
-**PUBLIC_RELEASE_AUTHORIZED: NO.** No remote repository was created, and nothing was pushed, published or deployed. Publication still needs the owner's separate explicit instruction.
+**PUBLIC_RELEASE_AUTHORIZED: YES, source only.** On 2026-10-17 the owner explicitly authorized publishing the audited 58-file candidate `8f17d0106290fd21eaa5a4b6ad492efb84329e7f` to [KaiserIIII/desktrace](https://github.com/KaiserIIII/desktrace). The candidate was pushed with GitHub author/committer association confirmed. Any later commit in this delivery is limited to required publication metadata or a demonstrated CI issue. No installer, PyPI package, formal Release or deployment is authorized or delivered. Feature development is frozen; actual CI runs are linked from the repository.
 
 Delivered: modular Python UIA adapter, explicit recording, editable JSON, scoped replay and assertions, local failure screenshots/JSON/HTML/hashes, CLI, Tk GUI, mock adapter, regression tests, owned Windows fixture, real system-app demonstration, result comparison, repetition summary, bounded failure minimization, provenance/license/security/architecture/handoff documentation and checkpoints.
 

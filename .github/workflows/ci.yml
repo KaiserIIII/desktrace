@@ -46,7 +46,16 @@ jobs:
       - name: Install source package without resolving new dependencies
         run: python -m pip install --no-build-isolation --no-deps .
       - name: Full existing suite, Unicode, CLI exits and mock bundle verification
-        run: python tools/verify.py
+        run: |
+          python tools/verify.py
+          $verifyExit = $LASTEXITCODE
+          if ($verifyExit -ne 0) {
+            Get-ChildItem -Path runs/verification-*/*.log -File | ForEach-Object {
+              Write-Output "Verification log: $($_.Name)"
+              Get-Content -LiteralPath $_.FullName
+            }
+          }
+          exit $verifyExit
       - name: Enforce expected test count and gate scope
         run: |
           python -c "import json,pathlib; s=[json.loads(p.read_text(encoding='utf8')) for p in pathlib.Path('runs').glob('verification-*/summary.json')]; assert len(s)==1, s; assert s[0]['test_count']==41 and s[0]['status']=='PASS', s; print('41 tests and mock CLI/evidence PASS; native GUI acceptance NOT RUN in CI')"
