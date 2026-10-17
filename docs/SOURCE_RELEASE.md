@@ -2,7 +2,7 @@
 
 Target repository: [KaiserIIII/desktrace](https://github.com/KaiserIIII/desktrace). Status: **source-only publication explicitly authorized and candidate pushed on 2026-10-17**. The audited candidate is `8f17d0106290fd21eaa5a4b6ad492efb84329e7f`, with 58 files. Subsequent delivery changes may only address a demonstrated CI issue or required publication metadata within those same paths. No tag, formal Release, PyPI package or installer is authorized. Feature development is frozen.
 
-The baseline is commit `b72487131337e86c6acf38ce385a202e2afc8cdb`, containing 55 reviewed text files. Preparation adds the workflow and two scope documents and updates README/security/handoff notices. Runtime source, tests, examples, tools and Python dependency locks must remain identical to that baseline. The exact final paths, Git blobs and SHA-256 hashes belong in the owner's external candidate manifest; no raw lab folder is a release input.
+The baseline is commit `b72487131337e86c6acf38ce385a202e2afc8cdb`, containing 55 reviewed text files. Preparation added the workflow and two scope documents and updated README/security/handoff notices, yielding the 58-file candidate. Runtime source, examples, tools and Python dependency locks remain identical to that baseline. Public CI exposed a test portability defect: three existing Windows-worker unit tests now explicitly simulate the Windows platform, and malformed responses must reach their precise error. No runtime behavior changed, no test was skipped and no file path was added. The owner's external initial/final manifests retain exact Git blobs and SHA-256 hashes; no raw lab folder is a release input.
 
 ## Included
 
